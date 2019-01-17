@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 class AnimalList extends Component {
     render() {
         return (
@@ -10,6 +9,15 @@ class AnimalList extends Component {
                         {animal.name}
                     </div>
                 )
+            }
+            </section>,
+            <section className="owners">
+            {
+                this.props.owners.map(owner =>
+                  <div key={owner.id}>
+                      {owner.name}
+                  </div>
+                  )
             }
             </section>
         )
