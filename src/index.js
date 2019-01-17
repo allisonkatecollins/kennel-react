@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import Kennel from "./components/location/Kennel";
+import Kennel from "./components/Kennel";
 //don't need to import EmployeeList because it's been imported to Kennel.js
 //--i.e. EmployeeList is a child of Kennel.js
 
