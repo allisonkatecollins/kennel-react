@@ -8,3 +8,5 @@ import Kennel from "./components/Kennel";
 //(component to render, place to render it)
 ReactDOM.render(<Kennel />, document.querySelector("#root"));
 //Kennel is effectively the entire app
+
+
