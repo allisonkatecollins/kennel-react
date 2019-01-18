@@ -25,6 +25,19 @@ export default class ApplicationViews extends Component {
     )
   }
 
+    fireEmployee = id => {
+      return fetch(`http://localhost:5002/employees/${id}`, {
+          method: "DELETE"
+      })
+      .then(e => e.json())
+      .then(() => fetch(`http://localhost:5002/employees`))
+      .then(e => e.json())
+      .then(employees => this.setState({
+          employees: employees
+      })
+    )
+  }
+
     //"r" is just short for "response" - you can name it what you want
     //componentDidMount must be named that
     componentDidMount() {
@@ -53,7 +66,7 @@ export default class ApplicationViews extends Component {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees} />
+                    return <EmployeeList fireEmployee={this.fireEmployee} employees={this.state.employees} />
                 }} />
                 <Route exact path="/locations" render={(props) => {
                     return <LocationList locations={this.state.locations} />
