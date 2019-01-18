@@ -16,12 +16,12 @@ class Kennel extends Component {
     */
 
     ownersFromAPI = [
-      { id: 1, animalId: 6, name: "Ryan Tanay" },
-      { id: 2, animalId: 4, name: "Emma Beaton" },
-      { id: 3, animalId: 2, name: "dani Adkins" },
-      { id: 4, animalId: 5, name: "Adam Oswalt" },
-      { id: 5, animalId: 1, name: "Fletcher Bangs" },
-      { id: 6, animalId: 3, name: "Angela Lee" }
+      { id: 1, name: "Ryan Tanay" },
+      { id: 2, name: "Emma Beaton" },
+      { id: 3, name: "dani Adkins" },
+      { id: 4, name: "Adam Oswalt" },
+      { id: 5, name: "Fletcher Bangs" },
+      { id: 6, name: "Angela Lee" }
     ]
 
     employeesFromAPI = [
@@ -43,23 +43,23 @@ class Kennel extends Component {
     //It will look just like the locations and employees arrays in state
     //Make sure each animal has an id property.
     animalsFromAPI = [
-        { id: 1, ownerId: 5, name: "Bumpo" },
-        { id: 2, ownerId: 3, name: "Tungus" },
-        { id: 3, ownerId: 6, name: "Brumbus" },
-        { id: 4, ownerId: 2, name: "Gareth" },
-        { id: 5, ownerId: 4, name: "Dumbles"},
-        { id: 6, ownerId: 1, name: "Horace"}
+        { id: 1, name: "Bumpo" },
+        { id: 2, name: "Tungus" },
+        { id: 3, name: "Brumbus" },
+        { id: 4, name: "Gareth" },
+        { id: 5, name: "Dumbles"},
+        { id: 6, name: "Horace"}
     ]
 
     //You create the intersection table and assign each animal to an owner.
-    ownershipsFromAPI = [
+    /* ownershipsFromAPI = [
       { id: 1, ownerId: 2, animalId: 4},
       { id: 2, ownerId: 1, animalId: 6},
       { id: 3, ownerId: 3, animalId: 2},
       { id: 4, ownerId: 5, animalId: 1},
       { id: 5, ownerId: 6, animalId: 3},
       { id: 6, ownerId: 4, animalId: 5}
-    ]
+    ] */
 
     //establishing 2 properties in state and where to find them
     //--i.e. property "employees" is found in the array employeesFromAPI

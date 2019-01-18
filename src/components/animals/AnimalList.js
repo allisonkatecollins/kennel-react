@@ -11,15 +11,6 @@ class AnimalList extends Component {
                 )
             }
             </section>
-           /*  <section className="owners">
-            {
-                this.props.owners.map(owner =>
-                  <div key={owner.id}>
-                      {owner.name}
-                  </div>
-                  )
-            }
-            </section> */
         )
     }
 }
