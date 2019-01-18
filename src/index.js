@@ -1,12 +1,14 @@
-import ReactDOM from 'react-dom';
-import React from 'react';
-import Kennel from "./components/Kennel";
-//don't need to import EmployeeList because it's been imported to Kennel.js
-//--i.e. EmployeeList is a child of Kennel.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from "react-router-dom"
+import Kennel from './components/Kennel'
 
+import './index.css'
 
-//(component to render, place to render it)
-ReactDOM.render(<Kennel />, document.querySelector("#root"));
-//Kennel is effectively the entire app
+ReactDOM.render(
+    <Router>
+        <Kennel />
+    </Router>
+    , document.getElementById('root'))
 
 
