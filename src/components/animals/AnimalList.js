@@ -10,8 +10,8 @@ class AnimalList extends Component {
                     </div>
                 )
             }
-            </section>,
-            <section className="owners">
+            </section>
+           /*  <section className="owners">
             {
                 this.props.owners.map(owner =>
                   <div key={owner.id}>
@@ -19,7 +19,7 @@ class AnimalList extends Component {
                   </div>
                   )
             }
-            </section>
+            </section> */
         )
     }
 }
