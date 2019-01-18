@@ -12,6 +12,19 @@ export default class ApplicationViews extends Component {
         owners: []
     }
 
+    deleteAnimal = id => {
+      return fetch(`http://localhost:5002/animals/${id}`, {
+          method: "DELETE"
+      })
+      .then(e => e.json())
+      .then(() => fetch(`http://localhost:5002/animals`))
+      .then(e => e.json())
+      .then(animals => this.setState({
+          animals: animals
+      })
+    )
+  }
+
     //"r" is just short for "response" - you can name it what you want
     //componentDidMount must be named that
     componentDidMount() {
@@ -39,9 +52,6 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route exact path="/animals" render={(props) => {
-                    return <AnimalList animals={this.state.animals} />
-                }} />
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList employees={this.state.employees} />
                 }} />
@@ -50,6 +60,9 @@ export default class ApplicationViews extends Component {
                 }} />
                 <Route exact path="/owners" render={(props) => {
                   return <OwnerList owners={this.state.owners} />
+                }} />
+                <Route exact path="/animals" render={(props) => {
+                  return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
             </React.Fragment>
         )
