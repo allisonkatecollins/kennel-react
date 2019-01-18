@@ -1,5 +1,39 @@
-.kennel {
+.employees {
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-}
+  justify-content: space-around, space-between;
+  background-color: rgb(172, 199, 223);
+  flex-direction: column;
+  font: bolder;
+  border-radius: 12px;
+  padding:40px;
+  }
+
+.owners {
+  display: flex;
+  justify-content: space-around, space-between;
+  background-color: rgb(147, 192, 154);
+  flex-direction: column;
+  font: bolder;
+  border-radius: 12px;
+  padding:40px;
+  }
+
+.animals {
+  display: flex;
+  justify-content: space-around, space-between;
+  background-color: rgb(211, 162, 98);
+  flex-direction: column;
+  font: bolder;
+  border-radius: 12px;
+  padding:40px;
+  }
+
+.locations {
+  display: flex;
+  justify-content: space-around, space-between;
+  background-color: rgb(218, 171, 171);
+  flex-direction: column;
+  font: bolder;
+  border-radius: 12px;
+  padding:40px;
+  }
