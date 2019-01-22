@@ -4,6 +4,10 @@ import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from './owners/OwnerList'
+import AnimalManager from "../modules/AnimalManager"
+import EmployeeManager from "../modules/EmployeeManager"
+import LocationManager from "../modules/LocationManager"
+import OwnerManager from "../modules/OwnerManager"
 export default class ApplicationViews extends Component {
     state = {
         animals: [],
@@ -54,23 +58,31 @@ export default class ApplicationViews extends Component {
     //"r" is just short for "response" - you can name it what you want
     //componentDidMount must be named that
     componentDidMount() {
-        const newState = {}
+      AnimalManager.getAll().then(allAnimals => {
+        this.setState({
+            animals: allAnimals
+        })
+      })
+      EmployeeManager.getAll().then(allEmployees => {
+        this.setState({
+            employees: allEmployees
+        })
+      })
+      LocationManager.getAll().then(allLocations => {
+        this.setState({
+            locations: allLocations
+        })
+      })
+      OwnerManager.getAll().then(allOwners => {
+        this.setState({
+            owners: allOwners
+        })
+      })
+    }
 
-        fetch("http://localhost:5002/animals")
-            .then(r => r.json())
-            .then(animals => newState.animals = animals)
-            .then(() => fetch("http://localhost:5002/employees")
-            .then(r => r.json()))
-            .then(employees => newState.employees = employees)
-            .then(() => fetch("http://localhost:5002/locations")
-            .then(r => r.json()))
-            .then(locations => newState.locations = locations)
-            .then(() => fetch("http://localhost:5002/owners")
-            .then(r => r.json()))
-            .then(owners => newState.owners = owners) 
-            .then(() => this.setState(newState))
-    }       
- 
+    //Add the get() and all() methods to each one, changing the URL path in each one to get the corresponding resource type
+    //Then refactor the ApplicationViews component to import all of them and use all of them when querying your data.
+
     //only JSX in document is within return below
     render() {
         return (
