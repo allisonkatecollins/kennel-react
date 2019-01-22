@@ -2,6 +2,7 @@
 //Then use the map() method to display all location names.
 
 import React, { Component } from 'react'
+
 class LocationList extends Component {
     render() {
         return (
