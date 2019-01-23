@@ -12,6 +12,7 @@ import AnimalManager from "../modules/AnimalManager"
 import EmployeeManager from "../modules/EmployeeManager"
 import LocationManager from "../modules/LocationManager"
 import OwnerManager from "../modules/OwnerManager"
+import AnimalForm from "./animal/AnimalForm"
 export default class ApplicationViews extends Component {
     state = {
         animals: [],
@@ -59,6 +60,16 @@ export default class ApplicationViews extends Component {
     )
   }
 
+  //can't pass the post() method from AnimalManager to a component
+  //--must write a method in ApplicationViews that implements it
+  //--pass this method down to the AnimalForm component as a prop
+    addAnimal = (animal) => AnimalManager.post(animal)
+      .then(() => AnimalManager.getAll())
+      .then(animals => this.setState({
+           animals: animals
+        })
+      )
+
     //"r" is just short for "response" - you can name it what you want
     //componentDidMount must be named that
     componentDidMount() {
@@ -94,7 +105,8 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                   return <LocationList locations={this.state.locations} />
                 }} />
-                {/*  "..." is a spread operator */}
+                {/*  "..." is a spread operator which allows you to move an object so it isn't nested*/}
+                {/* ... gives access to history*/}
                 <Route path="/locations/:locationId(\d+)" render={(props) => {
                   return <LocationDetail {...props} locations={this.state.locations} />
                 }} />
@@ -110,8 +122,18 @@ export default class ApplicationViews extends Component {
                 <Route path="/owners/:ownerId(\d+)" render={(props) => {
                   return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
                 }} />
+
+                {/*BEGIN ANIMAL ROUTING*/}
                 <Route exact path="/animals" render={(props) => {
-                  return <AnimalList animals={this.state.animals} />
+                  return <AnimalList {...props}
+                                     deleteAnimal={this.deleteAnimal}
+                                     animals={this.state.animals} />
+                }} />
+                {/*pass employees to the AnimalForm so a dropdown can be populated*/}
+                <Route path="/animals/new" render={(props) => {
+                  return <AnimalForm {...props}
+                                     addAnimal={this.addAnimal}
+                                     employees={this.state.employees} />
                 }} />
                 <Route path="/animals/:animalId(\d+)" render={(props) => {
                   return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
