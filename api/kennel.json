@@ -37,6 +37,12 @@
     {
       "id": 5,
       "name": "Fungus"
+    },
+    {
+      "name": "Bungus",
+      "breed": "Lab",
+      "employeeId": 4,
+      "id": 6
     }
   ],
   "owners": [
