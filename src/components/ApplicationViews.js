@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
@@ -13,7 +13,12 @@ import EmployeeManager from "../modules/EmployeeManager"
 import LocationManager from "../modules/LocationManager"
 import OwnerManager from "../modules/OwnerManager"
 import AnimalForm from "./animal/AnimalForm"
+import Login from "./authentication/Login"
 export default class ApplicationViews extends Component {
+
+  // Check if credentials are in local storage
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
     state = {
         animals: [],
         employees: [],
@@ -102,6 +107,7 @@ export default class ApplicationViews extends Component {
     render() {
         return (
             <React.Fragment>
+                <Route path="/login" component={Login} />
                 <Route exact path="/" render={(props) => {
                   return <LocationList locations={this.state.locations} />
                 }} />
@@ -110,12 +116,22 @@ export default class ApplicationViews extends Component {
                 <Route path="/locations/:locationId(\d+)" render={(props) => {
                   return <LocationDetail {...props} locations={this.state.locations} />
                 }} />
+
+                {/*implementation of conditional rendering - EmployeeList only rendered if user is authenticated*/}
+                {/*user not authenticated if credentials key does not exist in local storage*/}
+                {/*if user not authenticated, browser redirects to /login*/}
                 <Route exact path="/employees" render={(props) => {
-                  return <EmployeeList employees={this.state.employees} />
+                  if (this.isAuthenticated()) {
+                    return <EmployeeList fireEmployee={this.fireEmployee}
+                                         employees={this.state.employees} />
+                  } else {
+                    return <Redirect to="/login" />
+                  }
                 }} />
                  <Route path="/employees/:employeeId(\d+)" render={(props) => {
                   return <EmployeeDetail {...props} fireEmployee={this.fireEmployee} employees={this.state.employees}/>
                 }} />
+                
                 <Route exact path="/owners" render={(props) => {
                   return <OwnerList owners={this.state.owners} />
                 }} />
