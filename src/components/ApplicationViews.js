@@ -62,7 +62,7 @@ export default class ApplicationViews extends Component {
 
   //can't pass the post() method from AnimalManager to a component
   //--must write a method in ApplicationViews that implements it
-  //--pass this method down to the AnimalForm component
+  //--pass this method down to the AnimalForm component as a prop
     addAnimal = (animal) => AnimalManager.post(animal)
       .then(() => AnimalManager.getAll())
       .then(animals => this.setState({

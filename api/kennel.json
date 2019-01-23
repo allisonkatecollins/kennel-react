@@ -3,6 +3,18 @@
     {
       "id": 4,
       "name": "Blaise Roberts"
+    },
+    {
+      "id": 1,
+      "name": "Glaise Boberts"
+    },
+    {
+      "id": 2,
+      "name": "Jaise Goberts"
+    },
+    {
+      "id": 3,
+      "name": "Naise Joberts"
     }
   ],
   "locations": [
@@ -18,14 +30,6 @@
     }
   ],
   "animals": [
-    {
-      "id": 1,
-      "name": "Tungus"
-    },
-    {
-      "id": 2,
-      "name": "Brungus"
-    },
     {
       "id": 3,
       "name": "Mungus"

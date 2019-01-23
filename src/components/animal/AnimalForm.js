@@ -39,6 +39,7 @@ export default class AnimalForm extends Component {
     //3 properties in state: animalName, breed, and employee
     //--3 directly corresponding input fields
     constructNewAnimal = evt => {
+      //evt.preventDefault: prevents form from redirecting away from the page (since it's a single page app)
         evt.preventDefault()
         if (this.state.employee === "") {
             window.alert("Please select a caretaker")
